@@ -1,0 +1,117 @@
+.servicesTabs{
+  list-style:none;
+  /* background:rgb(7, 7, 8); */
+  display:flex;
+  margin:0 auto;
+  height:fit-content;
+  padding:20px;
+  overflow: hidden;
+  width:calc(100%-20px);
+  /* background:orange; */
+}
+
+.servicesTabs li {
+  margin:0 auto;
+  /* background:black; */
+  color:black;
+  width:calc(100% / 3);
+  padding:10px;
+}
+
+.servicesTabs li ul {
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+
+
+.servicesTabs li ul li {
+  padding:0;
+  margin:0;
+  padding-top:10px; 
+  padding-bottom:10px; 
+  border-bottom:1px solid black;
+  width:100%;
+  
+}
+
+.servicesTabs p {
+width:fit-content;
+text-align: center;
+display:flex;
+color:black;
+border-radius: 20px;
+margin:0 auto;
+background:black;
+color:white;
+padding:10px 20px 10px 20px;
+animation: 4s expand infinite;
+
+}
+
+
+
+.ctaInsight{
+  margin-top:20px;
+  padding:5px;
+  background:black;
+  color:white;
+  display:flex;
+  flex-direction: row;
+  text-align:center;
+  justify-content: center;
+  
+}
+
+.ctaInsight p {
+  padding:0px 10px 5px 20px;
+  font-size: 13pt;
+
+}
+
+.title{
+  margin:10px auto;
+  font-size:18pt;
+  text-align: center;
+  margin-top:10px;
+  padding:10px 40px 10px 40px;
+  /* background:black; */
+  color:black;
+  border:1px solid #aaa;
+  border-radius: 200px;
+  width:fit-content;
+}
+
+@keyframes expand{
+  0%{
+    padding:10px 40px 10px 40px;
+  }
+  50%{
+    padding:10px 30px 10px 30px;
+  }
+  100%{
+      padding:10px 40px 10px 40px;
+  }
+}
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .servicesTabs{
+    display:block;
+    width:calc(100%-20px);
+  }
+
+  .servicesTabs li {
+    margin:0 auto;
+    width:70%;
+    padding:0;
+    padding-top:20px;
+
+  }
+  
+}
+

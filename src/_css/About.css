@@ -1,0 +1,31 @@
+.about{
+  /* padding:120px 0px 120px 0px; */
+  width:100%;
+  height:100vh;
+  margin: 0 auto;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background:url(../_img/1.jpg);
+  background-size: cover;
+  background-attachment:fixed
+}
+
+.paragraph{
+  text-align:left;
+  width:50%;
+  background:white;
+  padding:100px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .about{
+  padding-top:20px;
+  }
+  .paragraph{
+    padding:30px;
+  width:70%;
+  font-size:9pt;
+  }
+}

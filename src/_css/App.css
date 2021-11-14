@@ -1,0 +1,74 @@
+.App {
+  text-align: center;
+}
+.title{
+  font-size:18pt;
+  text-align: left;
+  padding-bottom:10px;
+  padding-left:40px;
+  border-bottom:1pt solid #01635e;
+  width:fit-content;
+}
+
+.clientsTabs{
+  list-style: none;
+  display:flex;
+  /* background:#f3f3f3; */
+  padding:20px 100px;
+  justify-content: center;
+  margin:0;
+  text-align: center;
+}
+.clientsTabs li{
+  width:200px;
+  height:200px;
+  margin: 0 auto;
+  border:1px solid #f1f1f1;
+  /* padding:20px; */
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+button{
+  background:transparent;
+  color:white;
+  font-size:12pt;
+  padding:8px 20px 8px 20px;
+  height:fit-content;
+  border:1px solid white;
+  border-radius: 20px;
+  animation:1s revanim forwards
+}
+button:hover{
+  animation:1s anim forwards;
+}
+
+
+@keyframes anim {
+  from{
+    border:1px solid white;
+    color:white
+  }
+  to{
+    border:1px solid orange;
+    color:orange
+  }
+}
+
+@keyframes revanim {
+  from{
+    border:1px solid orange;
+    color:orange
+  }
+  to{
+    border:1px solid white;
+    color:white
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .clientsTabs li{
+    width:100px;
+    height:100px;
+  }
+}
