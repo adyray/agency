@@ -106,7 +106,7 @@ function Work() {
           <div className="menuText">PROJECT MENU</div>
             {/* <p>PROJECTS</p> */}
             <ul>
-              <li className="selector" onClick={(e) => activateThis(e, 0)}>
+              <li className="selector active" onClick={(e) => activateThis(e, 0)}>
                 Project 1
               </li>
               <li className="selector" onClick={(e) => activateThis(e, 1)}>
