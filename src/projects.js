@@ -1,174 +1,223 @@
+import { useState, useEffect, useRef} from 'react'
 import Navbar from './_content/main/navbar'
 import Footer from './_content/main/footer'
-import PT from './_content/projects/projectTemplate'
+import ProjectTemplate from './_content/projects/projectTemplate'
 import './_css/Work.css'
-import { useState } from 'react'
-// import { useState } from 'react'
 
 //project one
-import p1_one from './_img/2.jpg'
-import p1_two from './_img/1.jpg'
-import p1_three from './_img/3.jpg'
-import p1_four from './_img/4.jpg'
-import p1_five from './_img/5.jpg'
-import p1_six from './_img/6.jpg'
+import React from 'react'
 
-import p2_one from './_img/p2_img/1.jpg'
-import p2_two from './_img/p2_img/2.jpg'
-import p2_three from './_img/p2_img/3.jpg'
-import p2_four from './_img/p2_img//4.jpg'
-import p2_five from './_img/p2_img//5.jpg'
-import p2_six from './_img/p2_img/6.jpg'
-
-import p3_one from './_img/p3_img/1.jpg'
-import p3_two from './_img/p3_img/2.jpg'
-import p3_three from './_img/p3_img/3.png'
-import p3_four from './_img/p3_img//4.png'
-import p3_five from './_img/p3_img//5.jpg'
-import p3_six from './_img/p3_img/6.jpg'
+import p2_1 from './_img/p2_img/1.jpg'
+import p2_2 from './_img/p2_img/2.jpg'
+import p2_3 from './_img/p2_img/3.jpg'
+import p2_4 from './_img/p2_img/4.jpg'
+import p2_5 from './_img/p2_img/5.jpg'
+import p2_6 from './_img/p2_img/6.jpg'
 
 
+import p3_1 from './_img/p3_img/1.jpg'
+import p3_2 from './_img/p3_img/2.jpg'
+import p3_3 from './_img/p3_img/3.png'
+import p3_4 from './_img/p3_img/4.png'
+import p3_5 from './_img/p3_img/5.jpg'
+import p3_6 from './_img/p3_img/6.jpg'
+
+
+import gsap, { selector } from 'gsap/all'
+import ScrollToPlugin from 'gsap/ScrollToPlugin'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 function Work() {
-  const [status, setStatus] = useState(0)
 
+  const [status, setStatus] = useState(null)
+  const [proj, setProj] = useState(false)
+  const [projTitle, setProjTitle] = useState("The New wave of science")
 
-  
-  const projectSwitcher = (number) => {
+   const activateThis = (e, n) => {
+    // const selectFirst = document.querySelector(".active")
+    // if(selectFirst !== null){
+    //   selectFirst.classList.remove("active");
+    // }
 
-      
-    switch(number) {
-      case number = 0 :
-  
-        return(
-          <PT image={{
-            activate: 0,
-            title: "The New Wave of Science",
-            description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quo veniam totam. Numquam, aperiam! Corrupti accusantium quia delectus reiciendis ipsam.",
-            one: { blob:p1_one},
-            two: { blob:p1_two},
-            three: { blob:p1_three},
-            four: { blob:p1_four},
-            five: { blob:p1_five},
-            six: { blob: p1_six,}
-          }}/>
-          )
-      case number = 1 :
-        return(
-        <PT image={{
-          activate: 0,
-          title: "The Grand Tour",
-          description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quo veniam totam. Numquam, aperiam! Corrupti accusantium quia delectus reiciendis ipsam.",
-          one: { blob:p2_one},
-          two: { blob:p2_two},
-          three: { blob:p2_three},
-          four: { blob:p2_four},
-          five: { blob:p2_five},
-          six: { blob: p2_six}
-        }}/>
-        )
-      case number = 2 :
-        return(
-        <PT image={{
-          activate: 0,
-          title: "Our Man in Japan",
-          one: { blob:p3_one, title: "Our Man in Japan", description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quo veniam totam. Numquam, aperiam! Corrupti accusantium quia delectus reiciendis ipsam."},
-          two: { blob:p3_two, title: "two", description: "test2"},
-          three: { blob:p3_three, title: "three", description: "test3"},
-          four: { blob:p3_four, title: "four", description: "test4"},
-          five: { blob:p3_five, title: "five", description: "test5"},
-          six: { blob: p3_six, title: "six", description: "test6"}
-        }}/>
-        )
-        case number = 3 :
-          return(
-          <PT image={{
-            activate: 0,
-            title: "Everybody Loves Raymond",
-            one: { blob:p1_one, title: "Everybody Loves Raymond", description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quo veniam totam. Numquam, aperiam! Corrupti accusantium quia delectus reiciendis ipsam."},
-            two: { blob:p1_two, title: "two", description: "test2"},
-            three: { blob:p1_three, title: "three", description: "test3"},
-            four: { blob:p1_four, title: "four", description: "test4"},
-            five: { blob:p1_five, title: "five", description: "test5"},
-            six: { blob: p1_six, title: "six", description: "test6"}
-          }}/>
-        )
-        case number = 4 :
-          return(
-          <PT image={{
-            activate: 0,
-            title: "Removals",
-            one: { blob:p1_one, title: "Removals", description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quo veniam totam. Numquam, aperiam! Corrupti accusantium quia delectus reiciendis ipsam." },
-            two: { blob:p1_two, title: "two", description: "test2"},
-            three: { blob:p1_three, title: "three", description: "test3"},
-            four: { blob:p1_four, title: "four", description: "test4"},
-            five: { blob:p1_five, title: "five", description: "test5"},
-            six: { blob: p1_six, title: "six", description: "test6"}
-          }}/>
-        )
-          case number = 5 :
-            return(
-          <PT image={{
-              activate: 0,
-              title: "Six out of 10 cats",
-              one: { blob:p1_one, title: "Six out of 10 cats", description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit quo veniam totam. Numquam, aperiam! Corrupti accusantium quia delectus reiciendis ipsam." },
-              two: { blob:p1_two, title: "two", description: "test2" },
-              three: { blob:p1_three, title: "three", description: "test3" },
-              four: { blob:p1_four, title: "four", description: "test4" },
-              five: { blob:p1_five, title: "five", description: "test5" },
-              six: { blob: p1_six, title: "six", description: "test6" }
-            }}/>
-            )
-      default : console.log("first Project");
-    }
-  
+    const panel = document.getElementsByClassName("projectTitle")[n].offsetTop
+    
+    // setProjTitle(e.target.innerText)
+    gsap.to(window, 2, {scrollTo: {y: panel + 40}})
+
+    // e.target.classList.add("active")
+
+    setStatus(n)
   }
 
-  const activateThis = (e, n) => {
-    const selectFirst = document.querySelector(".active")
-    if(selectFirst !== null){
-      selectFirst.classList.remove("active");
+  useEffect(() => {
+    const isElementOutViewport = (el) => {
+      var rect = el.getBoundingClientRect();
+      // console.log(rect)
+      return rect.bottom < 0 || rect.right < 0 || rect.left > window.innerWidth || rect.top > window.innerHeight;
     }
-    console.log(e, "this works")
-    setStatus(n)
+
+    const checkSelectorInView = (n) => {
+      const panel = document.getElementsByClassName("panel")[n]
+
+      window.addEventListener("scroll", () => {
+        if(isElementOutViewport(panel)){
+          //not in view
+          console.log(panel, "not view")
+          document.getElementsByClassName("selector")[n].classList.remove("active")
+        }else{
+          console.log(panel, "in view")
+          document.getElementsByClassName("selector")[n].classList.add("active")
+          // name.indexOf(name.innerText)
+        }
+      })
+    }
+    checkSelectorInView(0)
+    checkSelectorInView(1)
+    checkSelectorInView(2)
+    checkSelectorInView(3)
+    checkSelectorInView(4)
+    checkSelectorInView(5)
     
+   
+        
+
+  }, [])
+
+
+  const openMenu = (val) => {
+    const ps = document.querySelector(".project_sidebar")
+    if(val){
+    setProj(!val)
+    gsap.to(ps, 1, {left:"0%", height:"90vh"})
+  }else{
+    setProj(!val)
+    gsap.to(ps, 1, {left:"-92vw", height:"300px"})
+  }
+
   }
 
   return (
     <>
-    
-      <Navbar />
-      
-      <div className="project_sidebar">
-      <p>Project Menu</p>
-      <ul>
-        <li onClick={(e) => activateThis(e, 0)}>
-          The New wave of science
-        </li>
-        <li onClick={(e) => activateThis(e, 1)}>
-          The grand Tour
-        </li>
-        <li onClick={(e) => activateThis(e, 2)}>
-          Amazon's Man in Japan
-        </li>
-      </ul>
-      <ul>
-        <li onClick={(e) => activateThis(e, 3)}>
-          Everbody Loves Raymond
-        </li>
-        <li onClick={(e) => activateThis(e, 4)}>
-          Removals
-        </li>
-        <li onClick={(e) => activateThis(e, 5)}>
-          Six out of 10 cats
-        </li>
-      </ul>
+      <Navbar /><br/>
+      <div className="section_layout">
+        <div onClick={() => openMenu(proj)} className="project_sidebar">
+          <div className="jam">
+          <div className="menuText">PROJECT MENU</div>
+            {/* <p>PROJECTS</p> */}
+            <ul>
+              <li className="selector" onClick={(e) => activateThis(e, 0)}>
+                Project 1
+              </li>
+              <li className="selector" onClick={(e) => activateThis(e, 1)}>
+              Project 2
+              </li>
+              <li className="selector" onClick={(e) => activateThis(e, 2)}>
+              Project 3
+              </li>
+            </ul>
+            <ul>
+              <li className="selector" onClick={(e) => activateThis(e, 3)}>
+              Project 4
+              </li>
+              <li className="selector" onClick={(e) => activateThis(e, 4)}>
+              Project 5
+              </li>
+              <li className="selector" onClick={(e) => activateThis(e, 5)}>
+              Project 6
+              </li>
 
+            </ul>
+
+          </div>
+        </div>
+
+
+        <div className="main_container">
+      <div className="container_workpage">
+
+
+        <ul className="preview">
+
+          <li className="sliderWrap">
+
+            <div className="slider">
+              
+              <ProjectTemplate 
+              title={"Project 1"}
+              image1={p2_1}
+              image2={p2_2}
+              image3={p2_3}
+              image4={p2_4}
+              image5={p2_5}
+              image6={p2_6}
+              />
+
+              <ProjectTemplate 
+              title={"Project 2"}
+              image1={p3_1}
+              image2={p3_2}
+              image3={p3_3}
+              image4={p3_4}
+              image5={p3_5}
+              image6={p3_6}
+              />
+
+              <ProjectTemplate 
+              title={"Project 3"}
+              image1={p3_1}
+              image2={p3_2}
+              image3={p3_3}
+              image4={p3_4}
+              image5={p3_5}
+              image6={p3_6}
+              />
+
+              <ProjectTemplate 
+              title={"Project 4"}
+              image1={p3_1}
+              image2={p3_2}
+              image3={p3_3}
+              image4={p3_4}
+              image5={p3_5}
+              image6={p3_6}
+              />
+
+            <ProjectTemplate 
+              title={"Project 5"}
+              image1={p3_1}
+              image2={p3_2}
+              image3={p3_3}
+              image4={p3_4}
+              image5={p3_5}
+              image6={p3_6}
+              />  
+
+              <ProjectTemplate 
+              title={"Project 6"}
+              image1={p3_1}
+              image2={p3_2}
+              image3={p3_3}
+              image4={p3_4}
+              image5={p3_5}
+              image6={p3_6}
+              />
+
+              
+            </div>
+
+          </li>
+        </ul>
+
+        <p className="scrolltoslide"><span>&darr;</span><br />scroll to slide</p>
+
+      </div>
     </div>
 
-      {projectSwitcher(status)}
-      
+
+      </div>
       <Footer />
-     </>
+    </>
   );
 }
 

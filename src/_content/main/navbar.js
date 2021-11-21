@@ -1,4 +1,5 @@
 import '../../_css/Navbar.css'
+import React from 'react'
 import ego from '../../_img/logo-bw.png'
 import { gsap } from "gsap";
 import { Link, Redirect} from "react-router-dom"

@@ -6,8 +6,8 @@
   display:flex;
   justify-content: center;
   align-items: center;
-  background:url(../_img/1.jpg);
-  background-size: cover;
+  background:url(../_img/icon.jpg);
+  background-size: 50%;
   background-attachment:fixed
 }
 

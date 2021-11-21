@@ -1,4 +1,5 @@
 import '../../_css/Header.css'
+import React from 'react'
 import gsap from 'gsap'
 import TextPlugin from 'gsap/TextPlugin';
 import { useEffect } from 'react';

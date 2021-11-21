@@ -1,90 +1,58 @@
 import '../../_css/Work.css'
+import React from 'react'
+import { useEffect, useState } from 'react';
 import gsap from 'gsap'
-import ScrollToPlugin from 'gsap/ScrollToPlugin'
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { useEffect } from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
-function Work(info) {
+function Work(data) {
+
+  useEffect(() => {
   
-  // const [image, setImage] = useState(0)
-
-useEffect(() => {
-  let sections = gsap.utils.toArray(".panel");
-
-  gsap.to(sections, {
-    xPercent: -100 * (sections.length - 1),
-    ease: "none",
-    scrollTrigger: {
-      trigger: ".container_workpage",
-      pin: true,
-      scrub: 1,
-      snap: 1 / (sections.length - 1),
-      // base vertical scrolling on how wide the container is so it feels more natural.
-      end: "+=3500"
+    const isElementOutViewport = (el) => {
+      var rect = el.getBoundingClientRect();
+      // console.log(rect)
+      return rect.bottom < 0 || rect.right < 0 || rect.left > window.innerWidth || rect.top > window.innerHeight;
     }
-  });
-}, [])
-  
+
+    let scroll = window.requestAnimationFrame || function(cb){ window.setTimeout(cb, 1000/60)} 
+
+    const loops = () => {
+      let elementsToShow = document.querySelectorAll(".advent")
+      elementsToShow.forEach((elem) => {
+        if(isElementOutViewport(elem)){
+          elem.classList.remove("opacityChange")
+        }else{
+          elem.classList.add("opacityChange")
+        }
+
+      })
+      scroll(loops)
+    }
+    loops();
+  }, [])
  
 
-   
-
   return (
-    <div>
-      <p className="scrolltoslide"><span>&darr;</span><br/>scroll to slide</p>
-      <div className="container_workpage">
-
-      <h1 className="projectTitle">{info.image.title}</h1>
-
-    <ul className="preview">
-
-    {/* {prev} */}
-
-      <li className="sliderWrap">
-
-      <div className="slider">
-      <section className="panel">
-      <img src={info.image.one.blob} alt={info.image.one.title}/>
-      </section>
+    <>
+    
+  <h1 className="projectTitle">{data.title}</h1>
 
   <section className="panel">
-  <img src={info.image.two.blob} alt={info.image.two.title}/>
-  </section>
-
-  <section className="panel">
-  <img src={info.image.three.blob} alt={info.image.three.title}/>
-  </section>
-
-  <section className="panel">
-  <img src={info.image.four.blob} alt={info.image.four.title}/>
-  </section>
-
-  <section className="panel">
-  <img src={info.image.five.blob} alt={info.image.five.title}/>
-  </section>
-
-  <section className="panel">
-  <img src={info.image.six.blob} alt={info.image.six.title}/>
-  </section>
-
-  </div>
   
-      </li>
-
-      </ul>
-      <p className="img_desc">
-      {info.image.title}<br/><br/>
-      {info.image.description}
-      </p>
-
-      </div>
-
-      
-
-      </div>
-
+  <LazyLoadImage className="advent" src={data.image1} alt={"image"}/>
+  <LazyLoadImage className="advent" src={data.image2} alt={"image"}/>
+  <LazyLoadImage className="advent" src={data.image3} alt={"image"}/>
+  <LazyLoadImage className="advent" src={data.image4} alt={"image"}/>
+  <LazyLoadImage className="advent" src={data.image5} alt={"image"}/>
+  <LazyLoadImage className="advent" src={data.image6} alt={"image"}/>
+  
+  </section>
+   </> 
   )
 }
 

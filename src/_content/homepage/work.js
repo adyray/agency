@@ -1,4 +1,5 @@
 import meta from '../../_img/client/meta-logo.png'
+import React from 'react'
 import ea from '../../_img/client/EA-Emblem.png'
 import epic from '../../_img/client/Epic_Games_logo.png'
 import google from '../../_img/client/google.png'

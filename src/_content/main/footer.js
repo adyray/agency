@@ -1,4 +1,5 @@
 import '../../_css/Footer.css'
+import React from 'react'
 import facebook from '../../_img/face.png'
 import insta from '../../_img/insta.png'
 import twitter from '../../_img/twitter.png'

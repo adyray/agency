@@ -1,4 +1,5 @@
 import './_css/App.css';
+import React from 'react'
 import Navbar from './_content/main/navbar'
 import Header from './_content/homepage/header'
 import Services from './_content/homepage/services'
