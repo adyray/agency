@@ -181,7 +181,7 @@ text-decoration: underline;
 }
 
 [name="enquiryType"]{
-  display:none
+  display:none !important
 }
 
 .enquiry-dropdown li{

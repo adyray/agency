@@ -151,7 +151,7 @@ setEnquiryType(e.target.innerText)
              <ul  className="enquiry-dropdown">
                <li className="selectOption active-enquiry" onClick={(e) => enquiry(e)}>General</li>
                <li className="selectOption" onClick={(e) => enquiry(e)}>Quote</li>
-               <input style={{display:"none"}} name="enquiryType" value={enquiryType} onChange={(value) => setEnquiryType(value)}/>
+               <input style={{display:"none !important"}} name="enquiryType" value={enquiryType} onChange={(value) => setEnquiryType(value)}/>
               </ul>
              <label>Message</label>
              <textarea name="message" placeholder="Type a message" min="10" maxLength="150" required></textarea>
