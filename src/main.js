@@ -7,10 +7,9 @@ import Clients from './_content/homepage/work'
 import Footer from './_content/main/footer'
 
 function Main() {
-  
   return (
     <div className="App">
-      <Navbar />
+      <Navbar/>
       <Header />
       <Services />
       <Clients />

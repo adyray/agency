@@ -20,7 +20,10 @@ font-size:20pt;
 border:2px solid #ccc;
 color:black;
 width:fit-content;
+margin-left:10px;
 }
+
+
 
 .project_sidebar{
   width:30vw;
@@ -95,30 +98,24 @@ color:black !important;
 border:0px !important;
 }
 
+
+
 .menu_title:hover{
   color:black !important;
 }
 
 .project_sidebar li:hover{
   color:black;
-  background:orange;
-  box-shadow: inset 0 0 0 2px orange !important;
+  background:#e90349;
+  box-shadow: inset 0 0 0 2px #e90349 !important;
 
 } 
 
 .active{
-  color:black !important;
-  background:orange !important;
-  box-shadow: inset 0 0 0 2px orange !important;
+  color:white !important;
+  background:#e90349 !important;
+  box-shadow: inset 0 0 0 2px #e90349 !important;
 
-}
-
-.main_container{
-  /* background:purple; */
-  width:70vw;
-  min-height: 100vh;
-  padding:0;
-  margin:0 auto;
 }
 
 .preview{
@@ -369,8 +366,15 @@ color:black;
     padding-top:40px;
     
   }
+
   .main_container{
-    width:70vw;
+    /* position: absolute; */
+    /* width:100%;/ */
+    /* height:100vh !important; */
+    /* margin:0px; */
+    /* top:0; */
+    /* left:0; */
+    background: #170f45
   }
   .menuText{
     margin-top:-10px
@@ -402,6 +406,10 @@ color:black;
 
 
 @media only screen and (max-width: 600px) {
+  .slider h1{
+    text-align: center;
+    margin:20px auto;
+  }
   .menuText{
     display:block;
     user-select: none;
@@ -425,7 +433,7 @@ color:black;
     z-index:9000;
     /* padding:20px; */
     padding-top:80px;
-    background:orange
+    background:#e90349
     
   }
 
@@ -460,7 +468,7 @@ color:black;
   }
 
   .project_sidebar ul, .jam{
-    background:orange;
+    background:#e90349;
     margin:auto;
     width:100%;
     /* padding:10px; */
@@ -526,6 +534,7 @@ color:black;
   margin:0;
   justify-content: center;
 }
+
 
 @keyframes scrollup {
   0%{

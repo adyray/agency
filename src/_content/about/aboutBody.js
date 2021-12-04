@@ -5,10 +5,10 @@ function body() {
   return (
     <div className="about">
     <div className="paragraph">
-    <h1 style={{"border" : "2px solid orange", "width" : "fit-content", "padding" : "10px"}}>
+    <h1 style={{"border" : "2px solid #e90349", "width" : "fit-content", "padding" : "10px"}}>
     WHY EGO?
     </h1>
-      <h1 style={{"background" : "orange", "width" : "fit-content", "padding" : "10px"}}>
+      <h1 style={{"background" : "#e90349", "width" : "fit-content", "color": "white", "padding" : "10px"}}>
         We give you the best.
         </h1>
     <p>

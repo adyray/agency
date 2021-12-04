@@ -11,22 +11,19 @@ function footer() {
     <>
      <div className="footerContainer">
      <div className="footerContent">
-       <p className="left-f-title">Site Navigation</p>
+       <h1 className="left-f-title flashyTitles">Site Navigation</h1>
       <ul className="left">
         <li>
           Careers
         </li>
         <li>
-          Navigation
+          <a href="/">Home</a>
         </li>
         <li>
-          Work
+        <a href="/work">Work</a>
         </li>
         <li>
-          Blogs
-        </li>
-        <li>
-          Social Feed
+          <a href="/blogs">Blogs</a>
         </li>
         <li>
         <ul className="socialLogos">

@@ -1,6 +1,6 @@
 import '../../_css/Work.css'
 import React from 'react'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import gsap from 'gsap'
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger'
@@ -40,7 +40,7 @@ function Work(data) {
   return (
     <>
     
-  <h1 className="projectTitle">{data.title}</h1>
+  <h1 className="flashyTitles">{data.title}</h1>
 
   <section className="panel">
   

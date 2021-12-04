@@ -20,6 +20,7 @@ function App() {
           <Route path="/work" component={work}></Route>
           <Route path="/blogs" component={blogs}></Route>
           <Route path="/elemental" component={elemental}></Route>
+          <Route path="*" component={elemental} />
         </Switch>
       </Router>
 

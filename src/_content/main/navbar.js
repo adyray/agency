@@ -2,7 +2,7 @@ import '../../_css/Navbar.css'
 import React from 'react'
 import ego from '../../_img/logo-bw.png'
 import { gsap } from "gsap";
-import { Link, Redirect} from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useState, useRef } from "react"
 import emailjs from "emailjs-com"
 
@@ -12,14 +12,22 @@ function Navbar() {
   const [on, setOn] = useState(true)
   const [sick, setSickmade] = useState(true)
   const [success, setSuccess] = useState(null)
+  const [enquiryType, setEnquiryType] = useState("General")
+
 window.addEventListener("scroll", () => {
 
   const logo = document.querySelector(".egoLogo")
+  const icon = document.querySelector(".logo-main")
+
 
   if(window.scrollY){
-    gsap.to(logo, .3, {width:25})
+
+    gsap.to(logo, .3, {width:25, padding:0})
+    gsap.to(icon, .3, {padding:9, marginLeft:14})
   }else{
-    gsap.to(logo, .3, {width:50})
+    gsap.to(logo, .3, {width:40})
+    gsap.to(icon, .3, {padding:20, marginLeft:0})
+
   }
 
 })
@@ -43,11 +51,9 @@ const toggleContact = (val) => {
     vision.style.display = "flex"
     setSickmade(!val)
   }else{
-    const a = document.querySelector(".getInTouch_container")
     vision.style.display = "none"
     setSickmade(!val)
   }
-
 }
 
 
@@ -64,18 +70,27 @@ const formC = useRef();
   
 }
 
+const enquiry = (e) => {
+
+document.querySelector(".active-enquiry").classList.remove("active-enquiry")
+e.target.classList.add("active-enquiry")
+
+setEnquiryType(e.target.innerText)
+}
+
+
   return (
     <>
     <div className="nb">
       <div className="logo-main">
       <Link to="/">
-      <img className="egoLogo" width="50px" src={ego} alt="ego-logo" />
+      <img className="egoLogo" width="40px" src={ego} alt="ego-logo" />
       </Link>
         
         </div>
 
       <ul className="nb_li"> 
-      <li onClick={() => toggleContact(sick)}className="cta_contact">Get in touch</li> 
+      <li onClick={() => toggleContact(sick)} className="cta_contact">Get in touch</li> 
       <Link to="/blogs">
       <li>Blogs</li> 
       </Link>
@@ -100,7 +115,7 @@ const formC = useRef();
 
     <div className="openMenu">
       <ul>
-      <li onClick={() => toggleContact(sick)}>Get in touch</li> 
+      <li className="getintouchbutns" onClick={() => toggleContact(sick)}>Get in touch</li> 
       <Link to="/blogs">
       <li>Blogs</li> 
       </Link>
@@ -124,20 +139,26 @@ const formC = useRef();
              {
                (success === null) ? 
                <>
-             <p>Get In Touch</p>
+             <h2 className="formTitle">Get In Touch</h2>
                <form className="contact_form" action="#" ref={formC} onSubmit={submitForm}>
              <label>Name</label>
-             <input name="from_name" type="text" placeholder="name" required></input>
+             <input name="from_name" type="text" placeholder="Name" required></input>
              <label>Email</label>
-             <input name="email" type="email" placeholder="email" required></input>
+             <input name="email" type="email" placeholder="Email" required></input>
              <label>Business</label>
-             <input name="business" type="business" placeholder="business (optional)"></input>
+             <input name="business" type="business" placeholder="Business (optional)"></input>
+             <label>Reason for Enquiry</label>
+             <ul  className="enquiry-dropdown">
+               <li className="selectOption active-enquiry" onClick={(e) => enquiry(e)}>General</li>
+               <li className="selectOption" onClick={(e) => enquiry(e)}>Quote</li>
+               <input name="enquiryType" value={enquiryType} onChange={(value) => setEnquiryType(value)}/>
+              </ul>
              <label>Message</label>
              <textarea name="message" placeholder="Type a message" min="10" maxLength="150" required></textarea>
              <button>Send</button>
             </form>
             </>
-            : (success) ? "Thanks for your message" : "Oops there's been a problem"
+            : (success) ? <h2 className="formTitle">Thanks for your message</h2> : <h2 className="formTitle">Oops there's been a problem</h2>
              } 
           </div>
       </div>

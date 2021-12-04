@@ -1,28 +1,33 @@
 import '../../_css/Work.css'
 import React from 'react'
-import { useState } from 'react'
-import firstImage from "../../_img/icon.jpg"
-import secondImage from "../../_img/ux.jpg"
+import fourOfour from "../../_img/404.gif"
+import Navbar from "../main/navbar"
+import Footer from "../main/footer"
 
 function Work() {
 
-  const [changeImage, setImage] = useState(false)
+//   const [changeImage, setImage] = useState(false)
 
-  const inc = (e) => {
-    setImage(!e)
-  }
+//   const inc = (e) => {
+//     setImage(!e)
+//   }
+
 
 
 
   return (
+      <>
+    <Navbar /><br/>
     <div className="main_container">
-      <button onClick={() => inc(changeImage)}>
-        change image
-      </button>
-
-      <img src={(changeImage) ? firstImage : secondImage} width="200px" alt="image"/>
+      <img src={fourOfour} width={"100%"} alt="404"/>
+       <div style={{padding: "0px !important", margin:"-3px 0px", background: "#170f45"}}>
+           <a href="/">
+               <button>Take Me Home</button>
+            </a>
+        </div>
     </div>
-
+    <Footer/>
+    </>
   )
 }
 

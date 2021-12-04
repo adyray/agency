@@ -1,132 +1,80 @@
 import Navbar from './_content/main/navbar'
 import React from 'react'
 import Footer from './_content/main/footer'
-import imgone from "./_img/p4_img/1.jpg"
-import imgtwo from "./_img/p3_img/2.jpg"
+import imgone from "./_img/6.jpg"
+import imgtwo from "./_img/5.jpg"
 import './_css/Blogs.css'
-import { useState, useEffect } from 'react'
-
+import { useState } from 'react'
+import gsap from 'gsap/all'
+import BlogTemplate from "./_content/blogs/blogTemplate"
 
 
 function Blogs() {
 
   const [template, setTemplate] = useState(0)
 
-  useEffect(() => {
+const changeArticle = (n) => {
+  gsap.to(window, 1, {scrollTo:{y:0}})
+  setTemplate(n)
+}
+const selectContents = () => {
+  return (
+    <>
+  <li onClick={() => changeArticle(0)}>How Ego Initiated</li>
+  <li onClick={() => changeArticle(1)}>The Brand</li>
+  {/* <li onClick={() => changeArticle(2)}>Article Three</li> */}
+  {/* <li onClick={() => changeArticle(3)}>Article Four</li> */}
+  </>
+  )
+}
 
-    window.addEventListener("resize", () => {
-      if(window.innerWidth < 300) {
-        document.body.style.background = "blue";
-      }
-    })
-  
-  }, [])
-  
+const formatParagraph = (props) => {
+  let nt = props.split('\n').map((text, i) => <div key={i}>{text}</div>);
+  return nt
+}
 
 
-  const templateType = (n,) => {
-    if(n === 0){
-      return (
-        <section className="b_section">
-          <div className="b_title">
-            Everybody Loves Raymond
-          <div></div>
-          </div>
-          <img src={imgone} width="80%" alt="img"/>
-          <p className="b_content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos omnis quisquam corporis voluptate vero modi sapiente magni maxime. Sunt, ratione! Quidem officia culpa autem incidunt, iusto, optio dolores blanditiis voluptatum sapiente deleniti similique rem at labore animi molestias laudantium debitis, vitae vero ipsum. Commodi quas facere, vitae numquam possimus iste fugiat, earum rerum, sit cumque incidunt quae laborum id in. Reprehenderit dolorum perspiciatis quo hic nihil sapiente repellendus, adipisci odit maxime dolore nesciunt soluta itaque cupiditate accusamus aliquid quos eveniet mollitia. Ratione optio autem assumenda veritatis? Consectetur possimus, nesciunt, maiores similique perferendis vero ipsa doloremque porro architecto molestiae velit odit.
-          <br/><br/>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque impedit quia esse rem officia accusamus minima asperiores ipsa quod dolor, accusantium neque similique repudiandae harum a nihil dolorum repellendus tempora, reiciendis numquam illum. Consequatur, quia suscipit accusamus numquam voluptatem officia aspernatur quisquam. Et error, ut commodi nobis impedit ab ipsum quaerat placeat pariatur sequi perferendis sint a ipsam saepe assumenda esse? Accusamus repudiandae veniam fugit deleniti cum enim optio explicabo inventore, in nemo! Nobis facilis perspiciatis minima reiciendis, quas saepe a aliquid eaque deserunt amet velit corrupti, aliquam quis consequatur harum alias, voluptas ipsam debitis laborum explicabo provident? Officiis, tenetur. Dolorem provident debitis inventore? Obcaecati voluptate, sint similique aut eaque ducimus delectus nisi architecto distinctio ad qui dicta dolorem facilis optio expedita, alias numquam nihil nemo magnam facere repellat labore autem nam. Facilis optio iure explicabo, qui repellendus ut assumenda voluptate delectus id quae ex incidunt similique voluptatem distinctio quisquam saepe alias est at soluta. Nam ipsam animi consequuntur quos repudiandae corrupti harum qui, sint ratione odit, quo dolorum quisquam sequi ex quas molestias suscipit quam, officiis sed quae. Voluptate error voluptatibus sunt similique. Repudiandae similique, atque fugit, aperiam eligendi beatae eos deleniti iste totam ad, saepe nostrum tempora eveniet.
-          </p>
-      </section>
+
+const updateBlog = (id) => {
+  let space = `\u00A0`
+  if(id === 0){
+    return (
+    <BlogTemplate 
+      src={imgone}
+      content={selectContents()}
+      title={"How Ego Initiated"}
+      subheading={formatParagraph("The Beginning of \nSomething Spectacular.")}
+      body={formatParagraph(`It all started from a thought, where working in the field of marketing and advertising just wasn't enough. We wanted to build a brand behind our expertise, and something that ecapsulates our knowledge and experience. EGO Worldwide's manifesto is to bring more ideas together for an insight driven approach to global campaigns. Using tools and international resources, we have developed a strategy that works for the client, achieving the heights of visions rather than adapting to what is just possible. We strive to reach beyond and for the best. \n ${space} \n` + 
+      "It has been a wonderful 10 years learning the ins and the outs of the field, and we've learnt the most important factor of an ad agency and that's, perfection is achieved when boundaries are surpassed. Becoming better than what has been achieved in previous stages, and having the confidence to be a part of the chain reaction of new age of design evolution and execution."
+      )}
+      />
       )
-    }else if(n === 1){
-      return (
-      <section className="b_section">
-      <div className="b_title">
-        Friends
-      <div></div>
-      </div>
-      <img src={imgtwo} width="80%" alt="img"/>
-      <p className="b_content">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos omnis quisquam corporis voluptate vero modi sapiente magni maxime. Sunt, ratione! Quidem officia culpa autem incidunt, iusto, optio dolores blanditiis voluptatum sapiente deleniti similique rem at labore animi molestias laudantium debitis, vitae vero ipsum. Commodi quas facere, vitae numquam possimus iste fugiat, earum rerum, sit cumque incidunt quae laborum id in. Reprehenderit dolorum perspiciatis quo hic nihil sapiente repellendus, adipisci odit maxime dolore nesciunt soluta itaque cupiditate accusamus aliquid quos eveniet mollitia. Ratione optio autem assumenda veritatis? Consectetur possimus, nesciunt, maiores similique perferendis vero ipsa doloremque porro architecto molestiae velit odit.
-      <br/><br/>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque impedit quia esse rem officia accusamus minima asperiores ipsa quod dolor, accusantium neque similique repudiandae harum a nihil dolorum repellendus tempora, reiciendis numquam illum. Consequatur, quia suscipit accusamus numquam voluptatem officia aspernatur quisquam. Et error, ut commodi nobis impedit ab ipsum quaerat placeat pariatur sequi perferendis sint a ipsam saepe assumenda esse? Accusamus repudiandae veniam fugit deleniti cum enim optio explicabo inventore, in nemo! Nobis facilis perspiciatis minima reiciendis, quas saepe a aliquid eaque deserunt amet velit corrupti, aliquam quis consequatur harum alias, voluptas ipsam debitis laborum explicabo provident? Officiis, tenetur. Dolorem provident debitis inventore? Obcaecati voluptate, sint similique aut eaque ducimus delectus nisi architecto distinctio ad qui dicta dolorem facilis optio expedita, alias numquam nihil nemo magnam facere repellat labore autem nam. Facilis optio iure explicabo, qui repellendus ut assumenda voluptate delectus id quae ex incidunt similique voluptatem distinctio quisquam saepe alias est at soluta. Nam ipsam animi consequuntur quos repudiandae corrupti harum qui, sint ratione odit, quo dolorum quisquam sequi ex quas molestias suscipit quam, officiis sed quae. Voluptate error voluptatibus sunt similique. Repudiandae similique, atque fugit, aperiam eligendi beatae eos deleniti iste totam ad, saepe nostrum tempora eveniet.
-      </p>
-  </section>
-  )
-    }else if(n === 2){
-      return (
-      <section className="b_section">
-      <div className="b_title">
-        Frasier
-      <div></div>
-      </div>
-      <img src={imgtwo} width="80%" alt="img"/>
-      <p className="b_content">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos omnis quisquam corporis voluptate vero modi sapiente magni maxime. Sunt, ratione! Quidem officia culpa autem incidunt, iusto, optio dolores blanditiis voluptatum sapiente deleniti similique rem at labore animi molestias laudantium debitis, vitae vero ipsum. Commodi quas facere, vitae numquam possimus iste fugiat, earum rerum, sit cumque incidunt quae laborum id in. Reprehenderit dolorum perspiciatis quo hic nihil sapiente repellendus, adipisci odit maxime dolore nesciunt soluta itaque cupiditate accusamus aliquid quos eveniet mollitia. Ratione optio autem assumenda veritatis? Consectetur possimus, nesciunt, maiores similique perferendis vero ipsa doloremque porro architecto molestiae velit odit.
-      <br/><br/>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque impedit quia esse rem officia accusamus minima asperiores ipsa quod dolor, accusantium neque similique repudiandae harum a nihil dolorum repellendus tempora, reiciendis numquam illum. Consequatur, quia suscipit accusamus numquam voluptatem officia aspernatur quisquam. Et error, ut commodi nobis impedit ab ipsum quaerat placeat pariatur sequi perferendis sint a ipsam saepe assumenda esse? Accusamus repudiandae veniam fugit deleniti cum enim optio explicabo inventore, in nemo! Nobis facilis perspiciatis minima reiciendis, quas saepe a aliquid eaque deserunt amet velit corrupti, aliquam quis consequatur harum alias, voluptas ipsam debitis laborum explicabo provident? Officiis, tenetur. Dolorem provident debitis inventore? Obcaecati voluptate, sint similique aut eaque ducimus delectus nisi architecto distinctio ad qui dicta dolorem facilis optio expedita, alias numquam nihil nemo magnam facere repellat labore autem nam. Facilis optio iure explicabo, qui repellendus ut assumenda voluptate delectus id quae ex incidunt similique voluptatem distinctio quisquam saepe alias est at soluta. Nam ipsam animi consequuntur quos repudiandae corrupti harum qui, sint ratione odit, quo dolorum quisquam sequi ex quas molestias suscipit quam, officiis sed quae. Voluptate error voluptatibus sunt similique. Repudiandae similique, atque fugit, aperiam eligendi beatae eos deleniti iste totam ad, saepe nostrum tempora eveniet.
-      </p>
-  </section>
-  )
-    }else if(n === 3){
-      return (
-      <section className="b_section">
-      <div className="b_title">
-        Two &amp; a Half Men
-      <div></div>
-      </div>
-      <img src={imgtwo} width="80%" alt="img"/>
-      <p className="b_content">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos omnis quisquam corporis voluptate vero modi sapiente magni maxime. Sunt, ratione! Quidem officia culpa autem incidunt, iusto, optio dolores blanditiis voluptatum sapiente deleniti similique rem at labore animi molestias laudantium debitis, vitae vero ipsum. Commodi quas facere, vitae numquam possimus iste fugiat, earum rerum, sit cumque incidunt quae laborum id in. Reprehenderit dolorum perspiciatis quo hic nihil sapiente repellendus, adipisci odit maxime dolore nesciunt soluta itaque cupiditate accusamus aliquid quos eveniet mollitia. Ratione optio autem assumenda veritatis? Consectetur possimus, nesciunt, maiores similique perferendis vero ipsa doloremque porro architecto molestiae velit odit.
-      <br/><br/>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque impedit quia esse rem officia accusamus minima asperiores ipsa quod dolor, accusantium neque similique repudiandae harum a nihil dolorum repellendus tempora, reiciendis numquam illum. Consequatur, quia suscipit accusamus numquam voluptatem officia aspernatur quisquam. Et error, ut commodi nobis impedit ab ipsum quaerat placeat pariatur sequi perferendis sint a ipsam saepe assumenda esse? Accusamus repudiandae veniam fugit deleniti cum enim optio explicabo inventore, in nemo! Nobis facilis perspiciatis minima reiciendis, quas saepe a aliquid eaque deserunt amet velit corrupti, aliquam quis consequatur harum alias, voluptas ipsam debitis laborum explicabo provident? Officiis, tenetur. Dolorem provident debitis inventore? Obcaecati voluptate, sint similique aut eaque ducimus delectus nisi architecto distinctio ad qui dicta dolorem facilis optio expedita, alias numquam nihil nemo magnam facere repellat labore autem nam. Facilis optio iure explicabo, qui repellendus ut assumenda voluptate delectus id quae ex incidunt similique voluptatem distinctio quisquam saepe alias est at soluta. Nam ipsam animi consequuntur quos repudiandae corrupti harum qui, sint ratione odit, quo dolorum quisquam sequi ex quas molestias suscipit quam, officiis sed quae. Voluptate error voluptatibus sunt similique. Repudiandae similique, atque fugit, aperiam eligendi beatae eos deleniti iste totam ad, saepe nostrum tempora eveniet.
-      </p>
-  </section>
-  )
+    }else if(id === 1)
+    {
+    return (
+<BlogTemplate 
+      src={imgtwo}
+      title={"The Brand"}
+      content={selectContents()}
+      subheading={"Relation, Reaction, Reflection."}
+      body={formatParagraph(
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti pariatur ex, corporis expedita reprehenderit ad repellendus sed at, beatae mollitia quisquam officiis molestiae rerum quae optio dolore! Architecto consequuntur mollitia similique accusamus saepe iusto, cum eius quasi commodi dolores delectus nihil, beatae fuga quas laborum reprehenderit corrupti iure quidem rem quae? Ut commodi eum reiciendis, sed corporis similique? Architecto vitae iure repellendus deleniti ducimus nesciunt dolore, dolorem nisi nulla aliquid, omnis et molestias atque! Ipsam cumque, animi consequuntur iure ullam nobis atque id explicabo deleniti dolore, quasi inventore. Aspernatur reiciendis veniam repellendus, labore eos consequatur blanditiis accusantium, nostrum rerum ipsa ipsum laboriosam recusandae quaerat enim? Inventore porro, at sequi rerum ipsa hic eum, cupiditate quam harum facilis id eos, molestias qui quia ex quisquam laborum deserunt blanditiis ab incidunt cumque expedita. Recusandae deserunt consectetur voluptate aliquam magnam praesentium. Quasi, quos nisi quae culpa debitis facilis possimus maxime magni placeat quidem odit exercitationem harum officia sunt architecto pariatur qui nesciunt labore voluptatem ab soluta ad eius velit provident. Ut earum iusto perspiciatis voluptas non et. Accusantium at adipisci nisi ullam, reprehenderit recusandae nesciunt nemo porro minima minus, culpa veniam quia vero laudantium ipsa ipsam mollitia? Beatae iste accusamus ducimus aut! Minus."
+      )}
+      />
+    )
     }
-    
   }
-
-
-
-  
 
   return (
     <>
       <Navbar />
+      <br/>
         <div className="container">
-          <section className="b_section">
-          <div className="contents">
-            <p className="b_title">Contents</p>  
-            <ul className="content_list">
-              <li onClick={() => setTemplate(0)}>Everybody Loves Raymond</li>
-              <li onClick={() => setTemplate(1)}>Friends</li>
-              <li onClick={() => setTemplate(2)}>Frasier</li>
-              <li onClick={() => setTemplate(3)}>Two &amp; A Half Men</li>
-              </ul>
-          </div>
-        </section>
-          {templateType( template, null, null, null, null, null)}
-
+          {
+        updateBlog(template)
+          }
           
-          {/* 
-          [template type]
-          [template 1]
-          [title]
-          [img]
-          [copy1]
-
-          [template 2]
-          [title]
-          [img1]
-          [img2]
-          [copy1]
-          [copy2] 
-          */}
-
-          </div>
+          </div> 
 
       <Footer />
 

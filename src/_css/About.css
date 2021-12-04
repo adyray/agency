@@ -6,17 +6,45 @@
   display:flex;
   justify-content: center;
   align-items: center;
-  background:url(../_img/icon.jpg);
+  background:url(../_img/3.jpg);
   background-size: 50%;
-  background-attachment:fixed
+  background-attachment:fixed;
+  filter:blur(5px);
+  animation: .5s blurChange forwards;
+  will-change: filter;
 }
+
+@keyframes blurChange {
+  from{
+  filter:blur(10px);
+  }
+  to{
+  filter:blur(0);
+
+  }
+}
+
 
 .paragraph{
   text-align:left;
   width:50%;
   background:white;
   padding:100px;
+  /* margin-top:500px; */
+  animation: 1s moveUp forwards;
+  /* transform: rotate(45deg); */
+  will-change: margin-top;
 }
+
+@keyframes moveUp {
+  0%{
+  margin-top:500px;
+  }
+  100%{
+  margin-top:0px;
+  }
+}
+
 
 
 @media only screen and (max-width: 600px) {
