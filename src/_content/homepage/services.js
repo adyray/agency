@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import '../../_css/Services.css'
 import gsap from 'gsap'
 
 function Services() {
-  const [open, isOpen] = useState(true);
+  const [open, isOpen] = useState(false);
   const openServicesMenu = (bool) => {
     let arrow = document.querySelector(".iconArrow")
     let expandable = document.querySelectorAll(".list-types")
@@ -11,13 +11,13 @@ function Services() {
     // let bar = document.querySelector(".bar")
     // console.log(document.body.clientWidth)
     if(document.body.clientWidth > 600){
-      if(open){
+      if(!open){
         arrow.classList.remove("downArrow")
         arrow.classList.add("upArrow")
         gsap.to(expandable, 1, {autoAlpha:1})
         gsap.to(service, 1, {height:180, autoAlpha:1})
         // gsap.to(expandable, 1, {height:0, autoAlpha:0})
-        isOpen(false)
+        isOpen(true)
       }else{
         arrow.classList.remove("upArrow")
         arrow.classList.add("downArrow")
@@ -25,55 +25,49 @@ function Services() {
         // gsap.to(expandable, 1, {height:180, autoAlpha:1})
         gsap.to(expandable, 1, {autoAlpha:0})
         gsap.to(service, 1, {height:30})
-        isOpen(true)
+        isOpen(false)
       }
     }else{
       if(document.body.clientWidth < 600){
-        if(open){
+        if(!open){
           arrow.classList.remove("downArrow")
           arrow.classList.add("upArrow")
             gsap.to(expandable, 1, {height:150, autoAlpha:1})
-          isOpen(false)
+          isOpen(true)
         }else{
           arrow.classList.remove("upArrow")
           arrow.classList.add("downArrow")
           gsap.to(expandable, 1, {height:0, autoAlpha:0})
-          isOpen(true)
+          isOpen(false)
         }
     }
   }
 }
-const [windowWidth, setWindowWidth] = useState();
 
-  useEffect(() => {
-    setWindowWidth(window.innerWidth);
-    // console.log(windowWidth)
-  },[windowWidth])
+ 
 
   window.addEventListener("resize", () => {
     let arrow = document.querySelector(".iconArrow")
     let expandable = document.querySelectorAll(".list-types")
     let service = document.querySelectorAll(".servicesTabs")
+    if(!open){
     if(document.body.clientWidth > 600){
-
         arrow.classList.remove("upArrow")
         arrow.classList.add("downArrow")
         gsap.to(expandable, 1, {height:0, autoAlpha:0})
       gsap.to(service, 1, {height:30})
-        isOpen(false)
+        isOpen(true)
       
     }
-    
-  //   else{
-  //   if(windowWidth !== window.innerWidth){
-  //     setWindowWidth(window.innerWidth)
-  //     arrow.classList.remove("upArrow")
-  //     arrow.classList.add("downArrow")
-  //     gsap.to(expandable, 1, {height:0, autoAlpha:0})
-  //     gsap.to(service, 1, {height:"fit-content"})
-  //     isOpen(false)
-  //   }
-  // }
+    else{
+      console.log(open)
+      arrow.classList.remove("upArrow")
+      arrow.classList.add("downArrow")
+      // gsap.to(expandable, 1, {height:0, autoAlpha:0})
+      gsap.to(service, 1, {height:"fit-content"})
+      isOpen(true)
+  }
+}
   })
 
   const openGetInfo = () => {
