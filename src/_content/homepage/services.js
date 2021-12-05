@@ -51,19 +51,9 @@ const [windowWidth, setWindowWidth] = useState();
   },[windowWidth])
 
   window.addEventListener("resize", () => {
-    console.log(windowWidth, window.innerWidth)
-
-    if(windowWidth !== window.innerWidth){
     let arrow = document.querySelector(".iconArrow")
     let expandable = document.querySelectorAll(".list-types")
     let service = document.querySelectorAll(".servicesTabs")
-    // let bar = document.querySelector(".bar")
-    // console.log(document.body.clientWidth)
-    // if(window.clientWidth )
-    // var height = window.innerHeight;
-
-    // if()
-    
     if(document.body.clientWidth > 600){
 
         arrow.classList.remove("upArrow")
@@ -73,13 +63,15 @@ const [windowWidth, setWindowWidth] = useState();
         isOpen(false)
       
     }else{
+    if(windowWidth !== window.innerWidth){
+      setWindowWidth(window.innerWidth)
       arrow.classList.remove("upArrow")
       arrow.classList.add("downArrow")
       gsap.to(expandable, 1, {height:0, autoAlpha:0})
       gsap.to(service, 1, {height:"fit-content"})
       isOpen(false)
+    }
   }
-}
   })
 
   const openGetInfo = () => {
