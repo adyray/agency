@@ -6,35 +6,65 @@ function Services() {
   const [open, isOpen] = useState(true);
   const openServicesMenu = (bool) => {
     let arrow = document.querySelector(".iconArrow")
-    let expandable = document.querySelector(".servicesTabs li")
-    console.log(document.body.clientWidth)
+    let expandable = document.querySelectorAll(".list-types")
+    let service = document.querySelectorAll(".servicesTabs")
+    // let bar = document.querySelector(".bar")
+    // console.log(document.body.clientWidth)
     if(document.body.clientWidth > 600){
       if(open){
         arrow.classList.remove("downArrow")
         arrow.classList.add("upArrow")
-          gsap.to(expandable, 1, {height:180})
+        gsap.to(expandable, 1, {autoAlpha:1})
+        gsap.to(service, 1, {height:180, autoAlpha:1})
+        // gsap.to(expandable, 1, {height:0, autoAlpha:0})
         isOpen(false)
       }else{
         arrow.classList.remove("upArrow")
         arrow.classList.add("downArrow")
-        gsap.to(expandable, 1, {height:10})
+        
+        // gsap.to(expandable, 1, {height:180, autoAlpha:1})
+        gsap.to(expandable, 1, {autoAlpha:0})
+        gsap.to(service, 1, {height:30})
         isOpen(true)
       }
     }else{
-      gsap.to(expandable, 1, {height:"fit-content"})
+      if(document.body.clientWidth < 600){
+        if(open){
+          arrow.classList.remove("downArrow")
+          arrow.classList.add("upArrow")
+            gsap.to(expandable, 1, {height:150, autoAlpha:1})
+          isOpen(false)
+        }else{
+          arrow.classList.remove("upArrow")
+          arrow.classList.add("downArrow")
+          gsap.to(expandable, 1, {height:0, autoAlpha:0})
+          isOpen(true)
+        }
     }
   }
+}
 
   window.addEventListener("resize", () => {
-    let expandable = document.querySelector(".servicesTabs li")
-    let bar = document.querySelector(".bar")
-    if(document.body.clientWidth < 600){
-      gsap.to(expandable, 1, {height:"fit-content"})
-      gsap.to(bar, 1, {autoAlpha:0})
-      isOpen(false)
+    let arrow = document.querySelector(".iconArrow")
+    let expandable = document.querySelectorAll(".list-types")
+    let service = document.querySelectorAll(".servicesTabs")
+    // let bar = document.querySelector(".bar")
+    // console.log(document.body.clientWidth)
+    if(document.body.clientWidth > 600){
+    
+        arrow.classList.remove("upArrow")
+        arrow.classList.add("downArrow")
+        gsap.to(expandable, 1, {height:0, autoAlpha:0})
+      gsap.to(service, 1, {height:30})
+        isOpen(false)
+      
     }else{
-      gsap.to(bar, 1, {autoAlpha:1})
-    }
+      arrow.classList.remove("upArrow")
+      arrow.classList.add("downArrow")
+      gsap.to(expandable, 1, {height:0, autoAlpha:0})
+      gsap.to(service, 1, {height:"fit-content"})
+      isOpen(false)
+  }
   })
 
   const openGetInfo = () => {
@@ -55,7 +85,7 @@ function Services() {
         <div className="nodes3"></div>
         </div>
       <li><p style={{background:"#e90349"}}>Management</p>
-        <ul>
+        <ul className="list-types">
           <li>Media Agencies</li>
           <li>Ad Spaces</li>
           <li>B2B &amp; B2C</li>
@@ -64,7 +94,7 @@ function Services() {
           </ul>
       </li>
       <li><p style={{background:"#450d3d"}}>Creativity</p>
-      <ul>
+      <ul className="list-types">
           <li>Multiple Platform</li>
           {/* TVC, Billboards, Banners, Websites, Applications */}
           <li>Expert Designers &amp; Developers</li>
@@ -75,7 +105,7 @@ function Services() {
 
       </li>
       <li><p style={{background:"#a73559"}}>Consultation</p>
-      <ul>
+      <ul className="list-types">
           <li>Top Results</li>
           <li>Expert Market Knowledge</li>
           <li>Research &amp; Quality Feedback</li>

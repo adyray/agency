@@ -193,16 +193,19 @@ animation: 4s expand infinite;
  }
 }
 
-
+.list-types{
+  height:0px;
+  opacity:0;
+}
 
 @media only screen and (max-width: 600px) {
   .servicesTabs{
     display:block;
     width:calc(100%-20px);
   }
-  .servicesTabs li ul{
+  /* .servicesTabs li.list-types{
     display:none;
-  }
+  } */
 
   .servicesTabs li {
     margin:0 auto;
