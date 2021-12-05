@@ -60,9 +60,9 @@ function Services() {
       
     }
     else{
-      console.log(open)
-      arrow.classList.remove("upArrow")
-      arrow.classList.add("downArrow")
+      // console.log(open)
+      // arrow.classList.remove("upArrow")
+      // arrow.classList.add("downArrow")
       // gsap.to(expandable, 1, {height:0, autoAlpha:0})
       gsap.to(service, 1, {height:"fit-content"})
       isOpen(true)
