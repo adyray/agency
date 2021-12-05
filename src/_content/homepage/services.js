@@ -62,16 +62,18 @@ const [windowWidth, setWindowWidth] = useState();
       gsap.to(service, 1, {height:30})
         isOpen(false)
       
-    }else{
-    if(windowWidth !== window.innerWidth){
-      setWindowWidth(window.innerWidth)
-      arrow.classList.remove("upArrow")
-      arrow.classList.add("downArrow")
-      gsap.to(expandable, 1, {height:0, autoAlpha:0})
-      gsap.to(service, 1, {height:"fit-content"})
-      isOpen(false)
     }
-  }
+    
+  //   else{
+  //   if(windowWidth !== window.innerWidth){
+  //     setWindowWidth(window.innerWidth)
+  //     arrow.classList.remove("upArrow")
+  //     arrow.classList.add("downArrow")
+  //     gsap.to(expandable, 1, {height:0, autoAlpha:0})
+  //     gsap.to(service, 1, {height:"fit-content"})
+  //     isOpen(false)
+  //   }
+  // }
   })
 
   const openGetInfo = () => {
