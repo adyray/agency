@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../_css/Services.css'
 import gsap from 'gsap'
 
@@ -43,15 +43,29 @@ function Services() {
     }
   }
 }
+const [windowWidth, setWindowWidth] = useState();
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    // console.log(windowWidth)
+  },[windowWidth])
 
   window.addEventListener("resize", () => {
+    console.log(windowWidth, window.innerWidth)
+
+    if(windowWidth !== window.innerWidth){
     let arrow = document.querySelector(".iconArrow")
     let expandable = document.querySelectorAll(".list-types")
     let service = document.querySelectorAll(".servicesTabs")
     // let bar = document.querySelector(".bar")
     // console.log(document.body.clientWidth)
-    if(document.body.clientWidth > 600){
+    // if(window.clientWidth )
+    // var height = window.innerHeight;
+
+    // if()
     
+    if(document.body.clientWidth > 600){
+
         arrow.classList.remove("upArrow")
         arrow.classList.add("downArrow")
         gsap.to(expandable, 1, {height:0, autoAlpha:0})
@@ -65,6 +79,7 @@ function Services() {
       gsap.to(service, 1, {height:"fit-content"})
       isOpen(false)
   }
+}
   })
 
   const openGetInfo = () => {
