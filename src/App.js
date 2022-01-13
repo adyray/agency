@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Router>
+      <Router>
         <Switch>
           <Route path="/" exact component={main}></Route>
           <Route path="/about" component={about}></Route>
@@ -22,9 +22,9 @@ function App() {
           <Route path="/elemental" component={elemental}></Route>
           <Route path="*" component={elemental} />
         </Switch>
-      </Router> */}
+      </Router>
 
-      Error: System is down for maintenance.
+      {/* Error: System is down for maintenance. */}
 
     </div>
   );
